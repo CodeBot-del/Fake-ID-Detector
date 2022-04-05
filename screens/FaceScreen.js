@@ -48,7 +48,10 @@ const FaceScreen = () => {
                 >
                     <Text style={tw`text-white text-center text-lg font-semibold `}>Scan</Text>
                 </TouchableOpacity>
-                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                <View style={tw`pt-4`}>
+                    {image && <Image source={{ uri: image }} style={[{ width: 200, height: 200 }, tw``]} />}
+                </View>
+                
             </View>
             <View style={[tw`mr-2 mt-6 p-4`, styles.cameraContainer]}>
                 <TouchableOpacity
