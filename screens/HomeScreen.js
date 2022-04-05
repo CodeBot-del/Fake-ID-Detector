@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, Image, FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, Image, FlatList, TouchableOpacity, ImageBackground } from 'react-native'
 import React from 'react';
 import tw from 'tailwind-react-native-classnames';
 import NavOptions from '../components/NavOptions';
 import { Icon } from 'react-native-elements';
 
-
+const bg = require('./bg.png')
 const data = [
     {
         id: "123",
@@ -29,31 +29,38 @@ const HomeScreen = () => {
                         require('./logo2.png')
                     }
                     style={{
-                        width: 80, 
-                        height: 80, 
+                        width: 80,
+                        height: 80,
                         resizeMode: 'contain'
                     }}
                 />
-                <NavOptions/>
+                <NavOptions />
             </View>
-            <FlatList
-                data={data}
-                keyExtractor={(item) => item.id}
-                horizontal
-                renderItem={({item}) => (
-                    <TouchableOpacity
-                    style={tw`p-6 pl-4 pb-8 pt-4 m-2 ml-12`}
-                    >
-                        <View>
-                        <Image
-                        style={{width: 60, height: 60,}}
-                        source={{uri: item.image}}
-                    />
-                    <Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text>
-                        </View>
-                    </TouchableOpacity>
-                )}
-            />
+
+            <View style={styles.container2}>
+            <ImageBackground source={bg} style={styles.image}>
+                <View style={tw`p-5`}><Text style={tw`font-bold text-lg text-gray-700`}>Donate or contribute to the project</Text></View>
+                <FlatList
+                    data={data}
+                    keyExtractor={(item) => item.id}
+                    horizontal
+                    renderItem={({ item }) => (
+                        <TouchableOpacity
+                            style={tw`p-6 pl-4 pb-8 pt-4 m-2 ml-12`}
+                        >
+                            <View>
+                                <Image
+                                    style={{ width: 60, height: 60, }}
+                                    source={{ uri: item.image }}
+                                />
+                                <Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    )}
+                />
+                </ImageBackground>
+            </View>
+
         </SafeAreaView>
     )
 }
@@ -64,5 +71,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: StatusBar.currentHeight
+    },
+    image: {
+        flex: 1,
+        resizeMode: 'cover',
+        justifyContent: 'center',
+      },
+    container2: {
+        flex: 1,
+        flexDirection: 'column',
     }
+
+    
 })
