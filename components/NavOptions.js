@@ -9,7 +9,7 @@ const data = [
         id: "123",
         title: 'Facial Scan',
         image: 'https://www.womanthology.co.uk/wp-content/uploads/2017/06/facescan.gif',
-        screen: 'FacialScreen',
+        screen: 'FaceScreen',
     },
     {
         id: "456",
