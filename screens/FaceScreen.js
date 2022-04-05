@@ -22,7 +22,7 @@ const FaceScreen = () => {
                     <Text style={tw`text-white text-center`}>Scan</Text>
                 </View>
             </View>
-            <View style={tw``}>
+            <View style={[tw`mr-4 mt-6 p-4`, styles.cameraContainer]}>
                 <View
                     style={[tw`bg-green-500 items-center justify-center`, {height: 80, width: 150}]}
                 >
@@ -39,5 +39,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: StatusBar.currentHeight,
+    },
+    cameraContainer:{
+        alignItems: 'flex-end',
+
     }
 })
