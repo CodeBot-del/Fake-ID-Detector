@@ -12,7 +12,7 @@ const _handleOpenWithWebBrowser = () => {
 const HomeScreen = () => {
 
     return (
-        <SafeAreaView style={[tw`bg-white h-full`, styles.container]}>
+        <SafeAreaView style={[tw`h-full`, styles.container]}>
             <View style={tw`p-5 items-center`}>
                 <Image
                     source={

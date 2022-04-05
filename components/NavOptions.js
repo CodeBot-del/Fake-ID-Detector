@@ -2,6 +2,7 @@ import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 
 const data = [
@@ -20,12 +21,15 @@ const data = [
 ]
 
 const NavOptions = () => {
+    const navigation = useNavigation();
+
   return (
     <FlatList
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({item}) => (
             <TouchableOpacity 
+            onPress={() => navigation.navigate(item.screen)}
             style={tw`p-2 pl-4 pb-8 pt-4 m-2`}
             >
                 <View>
