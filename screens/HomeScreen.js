@@ -5,11 +5,9 @@ import NavOptions from '../components/NavOptions';
 import { Icon } from 'react-native-elements';
 import * as WebBrowser from 'expo-web-browser';
 
-const bg = require('./bg.png');
 const _handleOpenWithWebBrowser = () => {
     WebBrowser.openBrowserAsync('https://github.com/CodeBot-del/Fake-ID-Detector');
 };
-
 
 const HomeScreen = () => {
 
@@ -18,7 +16,7 @@ const HomeScreen = () => {
             <View style={tw`p-5 items-center`}>
                 <Image
                     source={
-                        require('./logo.png')
+                        require('./logo3.png')
                     }
                     style={{
                         width: 50,
