@@ -14,7 +14,7 @@ const data = [
     {
         id: "456",
         title: 'QR and Bar Code',
-        image: 'https://i.ibb.co/KGJCkrS/qr-scan.gif',
+        image: 'https://st2.depositphotos.com/3205185/7919/v/380/depositphotos_79194166-stock-illustration-qr-code-icon-vector-illustration.jpg?forcejpeg=true',
         screen: 'QRCodeScreen',
     }
 ]
@@ -24,23 +24,16 @@ const NavOptions = () => {
     <FlatList
         data={data}
         keyExtractor={(item) => item.id}
-        horizontal
         renderItem={({item}) => (
             <TouchableOpacity 
             style={tw`p-2 pl-4 pb-8 pt-4 m-2`}
             >
                 <View>
                     <Image
-                        style={{width: 120, height: 120,}}
+                        style={{width: 240, height: 160,}}
                         source={{uri: item.image}}
                     />
-                    <Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text>
-                    <Icon
-                        style={tw`p-2 bg-black rounded-full w-10 mt-4`}
-                        type='antdesign'
-                        name='arrowright'
-                        color='white'
-                    />
+                    <View style={tw`items-center`}><Text style={tw`mt-2 text-lg font-semibold`}>{item.title}</Text></View>
                 </View>
             </TouchableOpacity>
         )}
