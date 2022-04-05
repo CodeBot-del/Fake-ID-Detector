@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, StatusBar, SafeAreaView, TouchableOpacity } from 'react-native';
-import React from 'react'
+import { StyleSheet, Text, View, StatusBar, SafeAreaView, TouchableOpacity, Image, Platform  } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
+import * as ImagePicker from 'expo-image-picker';
 
 
 
