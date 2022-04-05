@@ -27,7 +27,7 @@ const QRCodeScreen = () => {
   return (
     <SafeAreaView style={[styles.container, tw`h-full`]}>
             <View style={[tw`p-6 items-center pt-10`, { height: 500 }]}>
-                <Text style={tw`p-2 font-semibold text-lg`}>QR & Bar Code Scan</Text>
+                <Text style={tw`p-2 font-semibold text-lg`}>QR & BarCode Scan</Text>
                 <TouchableOpacity
                     onPress={pickImage}
                     style={[tw`bg-gray-400 items-center justify-center mb-5`, { height: 200, width: 300, borderRadius: 10 }]}
