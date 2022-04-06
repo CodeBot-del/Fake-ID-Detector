@@ -3,8 +3,10 @@ import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Button, Image } fr
 import { Camera } from 'expo-camera';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 const CameraScreen = () => {
+    const navigation = useNavigation();
     const [hasPermission, setHasPermission] = useState(null);
     const [camera, setCamera] = useState(null);
     const [image, setImage] = useState(null);
@@ -63,13 +65,7 @@ const CameraScreen = () => {
                 <View style={[tw` items-center mr-5`, styles.sendButton]}>
                 <TouchableOpacity
                     
-                    onPress={() => {
-                        setType(
-                            type === Camera.Constants.Type.back
-                                ? Camera.Constants.Type.front
-                                : Camera.Constants.Type.back
-                        );
-                    }}>
+                    onPress={() => navigation.navigate('ResultScreen')}>
                     <Icon
                         style={tw`p-2 w-20`}
                         name="send"

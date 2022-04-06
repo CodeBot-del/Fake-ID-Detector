@@ -10,6 +10,7 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import CameraScreen from './screens/CameraScreen';
+import ResultScreen from './screens/ResultScreen';
 
 
 
@@ -46,6 +47,13 @@ export default function App() {
             <Stack.Screen 
             name="QRCodeScreen" 
             component={QRCodeScreen} 
+            options={{
+              headerShown: false,
+            }}
+            />
+            <Stack.Screen 
+            name="ResultScreen" 
+            component={ResultScreen} 
             options={{
               headerShown: false,
             }}
