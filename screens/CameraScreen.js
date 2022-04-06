@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Button } from 'react-native';
 import { Camera } from 'expo-camera';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
@@ -22,31 +22,32 @@ const CameraScreen = () => {
         return <Text>No access to camera</Text>;
     }
     return (
-        <View style={[styles.container,]}>
-            <Camera style={[styles.camera,]} type={type}>
-                <View style={[tw`bg-gray-500`, { width: '100%', height: 'auto' }]}>
-                    <View>
-                        <TouchableOpacity
-                            style={tw``}
-                            onPress={() => {
-                                setType(
-                                    type === Camera.Constants.Type.back
-                                        ? Camera.Constants.Type.front
-                                        : Camera.Constants.Type.back
-                                );
-                            }}>
-                            <Icon
-                                style={tw`p-2 w-20 `}
-                                name="retweet"
-                                color="white"
-                                type="entypo"
-                                size={30}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
+        <View style={{flex: 1}}>
+            <View style={[styles.cameraContainer,]}>
+                <Camera
+                    style={styles.fixedRatio}
+                    type={type}
+                    ratio={'1:1'}
+                />
 
-            </Camera>
+            </View>
+            <Button
+                title="Flip Image"
+                onPress={() => {
+                    setType(
+                        type === Camera.Constants.Type.back
+                            ? Camera.Constants.Type.front
+                            : Camera.Constants.Type.back
+                    );
+                }}>
+                {/* <Icon
+                    style={tw`p-2 w-20 `}
+                    name="retweet"
+                    color="white"
+                    type="entypo"
+                    size={30}
+                /> */}
+            </Button>
         </View>
     );
 }
@@ -54,15 +55,15 @@ const CameraScreen = () => {
 export default CameraScreen
 
 const styles = StyleSheet.create({
-    container: {
+    cameraContainer: {
         flex: 1,
-        height: '100%',
+        flexDirection: 'row',
         marginTop: StatusBar.currentHeight,
 
 
     },
-    camera: {
+    fixedRatio: {
         flex: 1,
-        height: '100%',
+        aspectRatio: 1,
     }
 }); 
