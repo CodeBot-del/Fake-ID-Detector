@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Button, Image } from 'react-native';
 import { Camera } from 'expo-camera';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 
 const CameraScreen = () => {
     const [hasPermission, setHasPermission] = useState(null);
+    const [camera, setCamera] = useState(null);
+    const [image, setImage] = useState(null);
     const [type, setType] = useState(Camera.Constants.Type.back);
 
     useEffect(() => {
@@ -15,6 +17,13 @@ const CameraScreen = () => {
         })();
     }, []);
 
+    const takePicture = async () => {
+        if (camera) {
+            const data = await camera.takePictureAsync(null);
+            setImage(data.uri);
+        }
+    }
+
     if (hasPermission === null) {
         return <View />;
     }
@@ -22,32 +31,50 @@ const CameraScreen = () => {
         return <Text>No access to camera</Text>;
     }
     return (
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
             <View style={[styles.cameraContainer,]}>
                 <Camera
+                    ref={ref => setCamera(ref)}
                     style={styles.fixedRatio}
                     type={type}
                     ratio={'1:1'}
                 />
 
             </View>
-            <Button
-                title="Flip Image"
-                onPress={() => {
-                    setType(
-                        type === Camera.Constants.Type.back
-                            ? Camera.Constants.Type.front
-                            : Camera.Constants.Type.back
-                    );
-                }}>
-                {/* <Icon
-                    style={tw`p-2 w-20 `}
-                    name="retweet"
-                    color="white"
-                    type="entypo"
-                    size={30}
-                /> */}
-            </Button>
+            <View style={[tw` items-center ml-4`, styles.flipButton]}>
+                <TouchableOpacity
+                    
+                    onPress={() => {
+                        setType(
+                            type === Camera.Constants.Type.back
+                                ? Camera.Constants.Type.front
+                                : Camera.Constants.Type.back
+                        );
+                    }}>
+                    <Icon
+                        style={tw`p-2 w-20 `}
+                        name="retweet"
+                        color="white"
+                        type="entypo"
+                        size={30}
+                    />
+                </TouchableOpacity>
+                </View>
+                <View style={tw`items-center`}>
+                <TouchableOpacity
+                    style={[styles.roundButton, tw`rounded-full`]}
+                    onPress={() => takePicture()}
+                >
+                    <Icon
+
+                        name="circle"
+                        color="white"
+                        type="entypo"
+                        size={50}
+                    />
+                </TouchableOpacity>
+            </View>
+            {image && <Image source={{ uri: image }} style={{ flex: 1 }} />}
         </View>
     );
 }
@@ -55,15 +82,32 @@ const CameraScreen = () => {
 export default CameraScreen
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginTop: StatusBar.currentHeight,
+    },
     cameraContainer: {
         flex: 1,
         flexDirection: 'row',
-        marginTop: StatusBar.currentHeight,
+        
 
 
     },
     fixedRatio: {
         flex: 1,
         aspectRatio: 1,
+    },
+    roundButton: {
+        marginTop: 1,
+        width: 50, 
+        backgroundColor: 'black',
+
+    },
+    flipButton: {
+        marginTop: 0,
+        width: 30,
+        height: 'auto', 
+        position: 'absolute',
+        justifyContent: 'center',
     }
 }); 
