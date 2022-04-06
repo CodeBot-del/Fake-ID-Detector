@@ -5,7 +5,7 @@ import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
-const CameraScreen = () => {
+const QRCameraScreen = () => {
     const navigation = useNavigation();
     const [hasPermission, setHasPermission] = useState(null);
     const [camera, setCamera] = useState(null);
@@ -69,7 +69,7 @@ const CameraScreen = () => {
                 <View style={[tw` items-center mr-5`, styles.sendButton]}>
                 <TouchableOpacity
                     
-                    onPress={() => navigation.navigate('ResultScreen',{imageUri: image})}>
+                    onPress={() => navigation.navigate('QRResultScreen',{imageUri: image})}>
                     <Icon
                         style={tw`p-2 w-20`}
                         name="send"
@@ -100,7 +100,7 @@ const CameraScreen = () => {
     );
 }
 
-export default CameraScreen
+export default QRCameraScreen;
 
 const styles = StyleSheet.create({
     container: {

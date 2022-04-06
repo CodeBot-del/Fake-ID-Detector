@@ -3,8 +3,10 @@ import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
+import { useNavigation } from '@react-navigation/native';
 
 const QRCodeScreen = () => {
+  const navigation = useNavigation();
 
   const [image, setImage] = useState(null);
     const pickImage = async () => {
@@ -55,6 +57,7 @@ const QRCodeScreen = () => {
             <View style={[tw`mr-2 mt-6 p-4`, styles.cameraContainer]}>
                 <TouchableOpacity
                     style={[tw`bg-black items-center justify-center rounded-full mt-8`, { height: 60, width: 60 }]}
+                    onPress={() => navigation.navigate('QRCameraScreen')}
                 >
                     <Icon
                         style={tw`p-2 w-20 `}

@@ -11,6 +11,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import CameraScreen from './screens/CameraScreen';
 import ResultScreen from './screens/ResultScreen';
+import QRCameraScreen from './screens/QRCameraScreen';
+import QRResultScreen from './screens/QRResultScreen';
 
 
 
@@ -52,8 +54,22 @@ export default function App() {
             }}
             />
             <Stack.Screen 
+            name="QRCameraScreen" 
+            component={QRCameraScreen} 
+            options={{
+              headerShown: false,
+            }}
+            />
+            <Stack.Screen 
             name="ResultScreen" 
             component={ResultScreen} 
+            options={{
+              headerShown: false,
+            }}
+            />
+            <Stack.Screen 
+            name="QRResultScreen" 
+            component={QRResultScreen} 
             options={{
               headerShown: false,
             }}

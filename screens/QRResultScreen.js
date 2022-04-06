@@ -10,7 +10,7 @@ const data = [
         id: "123",
         title: 'Take Again',
         icon: 'plus',
-        screen: 'FaceScreen',
+        screen: 'QRCodeScreen',
 
     },
     {
@@ -22,7 +22,7 @@ const data = [
 ]
 
 // pass route and navigation params for retrieving imageUri
-const ResultScreen = ({ route, navigation }) => {
+const QRResultScreen = ({ route, navigation }) => {
     const { imageUri } = route.params;
     // const url = JSON.stringify(imageUri);
     return (
@@ -62,7 +62,7 @@ const ResultScreen = ({ route, navigation }) => {
     )
 }
 
-export default ResultScreen
+export default QRResultScreen
 
 const styles = StyleSheet.create({
     container: {
