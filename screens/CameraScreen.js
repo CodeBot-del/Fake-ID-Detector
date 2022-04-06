@@ -60,6 +60,25 @@ const CameraScreen = () => {
                     />
                 </TouchableOpacity>
                 </View>
+                <View style={[tw` items-center mr-5`, styles.sendButton]}>
+                <TouchableOpacity
+                    
+                    onPress={() => {
+                        setType(
+                            type === Camera.Constants.Type.back
+                                ? Camera.Constants.Type.front
+                                : Camera.Constants.Type.back
+                        );
+                    }}>
+                    <Icon
+                        style={tw`p-2 w-20`}
+                        name="send"
+                        color="white"
+                        type="fontawesome"
+                        size={30}
+                    />
+                </TouchableOpacity>
+                </View>
                 <View style={tw`items-center`}>
                 <TouchableOpacity
                     style={[styles.roundButton, tw`rounded-full`]}
@@ -109,5 +128,13 @@ const styles = StyleSheet.create({
         height: 'auto', 
         position: 'absolute',
         justifyContent: 'center',
-    }
+    },
+    sendButton: {
+        marginTop: 0,
+        width: 50,
+        height: 'auto', 
+        position: 'absolute',
+        justifyContent: 'center',
+        alignSelf: 'flex-end',
+    },
 }); 
