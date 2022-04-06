@@ -3,11 +3,13 @@ import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 const FaceScreen = () => {
 
+    const navigation = useNavigation();
     const [image, setImage] = useState(null);
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
@@ -31,7 +33,7 @@ const FaceScreen = () => {
                 <Text style={tw`p-2 font-semibold text-lg`}>Facial Scan</Text>
                 <TouchableOpacity
                     onPress={pickImage}
-                    style={[tw`bg-gray-400 items-center justify-center mb-5`, { height: 200, width: 300, borderRadius: 10 }]}
+                    style={[tw`bg-gray-500 items-center justify-center mb-5`, { height: 200, width: 300, borderRadius: 10 }]}
                 >
                     <Icon
                         style={tw`p-2 w-20 `}
@@ -55,6 +57,7 @@ const FaceScreen = () => {
             </View>
             <View style={[tw`mr-2 mt-6 p-4`, styles.cameraContainer]}>
                 <TouchableOpacity
+                    onPress={() => navigation.navigate('CameraScreen')}
                     style={[tw`bg-black items-center justify-center rounded-full mt-8`, { height: 60, width: 60 }]}
                 >
                     <Icon

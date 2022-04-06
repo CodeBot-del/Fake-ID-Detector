@@ -30,7 +30,7 @@ const QRCodeScreen = () => {
                 <Text style={tw`p-2 font-semibold text-lg`}>QR & Bar Code Scan</Text>
                 <TouchableOpacity
                     onPress={pickImage}
-                    style={[tw`bg-gray-400 items-center justify-center mb-5`, { height: 200, width: 300, borderRadius: 10 }]}
+                    style={[tw`bg-gray-500 items-center justify-center mb-5`, { height: 200, width: 300, borderRadius: 10 }]}
                 >
                     <Icon
                         style={tw`p-2 w-20 `}
