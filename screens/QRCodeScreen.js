@@ -9,6 +9,7 @@ const QRCodeScreen = () => {
   const navigation = useNavigation();
 
   const [image, setImage] = useState(null);
+    // function to pick image from gallery
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -31,6 +32,7 @@ const QRCodeScreen = () => {
             <View style={[tw`p-6 items-center pt-10`, { height: 500 }]}>
                 <Text style={tw`p-2 font-semibold text-lg`}>QR & Bar Code Scan</Text>
                 <TouchableOpacity
+                // assign pickImage function to a component
                     onPress={pickImage}
                     style={[tw`bg-gray-500 items-center justify-center mb-5`, { height: 200, width: 300, borderRadius: 10 }]}
                 >
@@ -50,6 +52,7 @@ const QRCodeScreen = () => {
                     <Text style={tw`text-white text-center text-lg font-semibold `}>Scan</Text>
                 </TouchableOpacity>
                 <View style={tw`pt-4`}>
+                    {/* display the selected image */}
                     {image && <Image source={{ uri: image }} style={[{ width: 200, height: 200 }, tw``]} />}
                 </View>
                 
@@ -57,6 +60,7 @@ const QRCodeScreen = () => {
             <View style={[tw`mr-2 mt-6 p-4`, styles.cameraContainer]}>
                 <TouchableOpacity
                     style={[tw`bg-black items-center justify-center rounded-full mt-8`, { height: 60, width: 60 }]}
+                    // navigate to camera screen
                     onPress={() => navigation.navigate('QRCameraScreen')}
                 >
                     <Icon

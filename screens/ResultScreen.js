@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View, TouchableOpacity, StatusBar, Button, Image, FlatList } from 'react-native';
-import React from 'react';
+import React, {setState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
+
 
 // create list to be used for take again and ok buttons
 const data = [
@@ -28,10 +29,10 @@ const ResultScreen = ({ route, navigation }) => {
     return (
         <View style={styles.container}>
             <Text style={tw`mt-6 p-2 pl-4 text-lg font-semibold`}>Scan Results</Text>
-            
+
             <View style={[styles.imageContainer, tw`bg-gray-500 items-center justify-center m-2`]}>
                 {/* Get the image url from passed imageUri */}
-            <Image source={{ uri: imageUri }} style={[{ width: '100%', height: 300 }, tw``]} />
+                <Image source={{ uri: imageUri }} style={[{ width: '100%', height: 300 }, tw``]} />
             </View>
             {/* create a flatlist for take again and okay buttons */}
             <FlatList
@@ -56,6 +57,7 @@ const ResultScreen = ({ route, navigation }) => {
                 )}
             />
 
+            
 
 
         </View>

@@ -24,6 +24,7 @@ const CameraScreen = () => {
         if (camera) {
             const data = await camera.takePictureAsync(null);
             setImage(data.uri);
+            console.log(data.uri);
         }
     }
         // check for camera permission status

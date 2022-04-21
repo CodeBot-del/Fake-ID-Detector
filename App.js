@@ -17,13 +17,14 @@ import QRResultScreen from './screens/QRResultScreen';
 
 
 export default function App() {
+  // initialize stack navigator
   const Stack = createStackNavigator();
   return (
 
     <Provider store={store}>
       <NavigationContainer>
         <SafeAreaProvider>
-
+          {/* define all screens inside the stack navigator according to their positions */}
           <Stack.Navigator>
             <Stack.Screen 
             name="HomeScreen" 

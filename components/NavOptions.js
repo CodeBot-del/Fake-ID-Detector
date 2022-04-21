@@ -4,7 +4,7 @@ import tw from 'tailwind-react-native-classnames';
 import { Icon } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
 
-
+// initialize a list for options of facial and qr code
 const data = [
     {
         id: "123",
@@ -21,9 +21,11 @@ const data = [
 ]
 
 const NavOptions = () => {
+    // initialize navigation
     const navigation = useNavigation();
 
   return (
+    //   initialize flatlist for options of facial and qr code
     <FlatList
         data={data}
         keyExtractor={(item) => item.id}
